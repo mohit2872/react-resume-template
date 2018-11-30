@@ -118,34 +118,28 @@
   "portfolio":{
     "projects": [
       {
-        "title":"Canadian Wanderlust",
-        "category":"My Travel Blog for my post-university travels",
-        "image":"canadian-wanderlust.jpg",
-        "url":"https://www.canadianwanderlust.com"
+        "title":"Google",
+        "category":"Search Engine for everyone",
+        "image":"Google.jpg",
+        "url":"https://www.google.com"
       },
       {
-        "title":"Fury Fighting Gear",
-        "category":"(offline now) A fighting gear company I started",
-        "image":"fury-fighting-gear.jpg",
-        "url":"http://www.timbakerdev.com"
+        "title":"Amazon",
+        "category":"Buy Anything you want.",
+        "image":"Amazon.jpg",
+        "url":"http://www.amazon.in"
       },
       {
-        "title":"Original Thai Food",
-        "category":"Website I built for a restaurant I like in Thailand",
-        "image":"original-thai-food.jpg",
-        "url":"http://www.timbakerdev.com/originalthaifood.github.io"
+        "title":"Medium",
+        "category":"Become Smarter.",
+        "image":"Medium.png",
+        "url":"http://www.medium.com"
       },
       {
-        "title":"Resume Website",
-        "category":"A React based resume website template",
-        "image":"resume-website.jpg",
-        "url":"http://www.timbakerdev.com"
-      },
-      {
-        "title":"Smirkspace",
-        "category":"(MVP Only) A React and Meteor based chat University project.",
-        "image":"smirkspace.jpg",
-        "url":"http://www.smirkspace.com"
+        "title":"Youtube",
+        "category":"Stream Videos for free",
+        "image":"YouTube.png",
+        "url":"http://www.youtube.com"
       }
     ]
   },

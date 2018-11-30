@@ -1,6 +1,88 @@
 import React, { Component } from 'react';
 
 class Contact extends Component {
+
+   constructor(props){
+      super(props);
+      this.state = {
+         name: "",
+         messagePrinted: false,
+         cname: "",
+         number: "",
+         start: true,    
+      };
+      this.handleName = this.handleName.bind(this);
+      this.handleNumber = this.handleNumber.bind(this);
+      this.handleCName = this.handleCName.bind(this);
+      this.nameError = this.nameError.bind(this);
+    }
+
+    handleName(e){
+       this.setState({
+          name: e.target.value
+       })
+    }
+
+    handleCName(e){
+      this.setState({
+         cname: e.target.value
+      })
+   }
+
+   handleNumber(e){
+      this.setState({
+         number: e.target.value
+      })
+   }
+
+   nameError(){
+      const {name} = this.state
+      if(name==""){
+         return <div>Please fill the company name</div>;
+      }
+   }
+
+   cnameError(){
+      const {cname} = this.state
+      if(cname==""){
+         return <div>Please fill the name</div>;
+      }
+   }
+
+   numberError(){
+      const {number} = this.state
+      if(number==""){
+         return <div>Please fill the number</div>;
+      } else if (number.length != 10){
+         return <div>Number should be of 10 digits</div>;
+      } else if (parseInt(number) == NaN){
+         return <div>Numbers should consist of digits</div>;  
+      }
+   }
+
+   handleSubmit(){
+      this.setState({
+         messagePrinted: true
+      })
+   }
+
+   showMessage(){
+      const {name, cname, number, messagePrinted} = this.state;
+      if(messagePrinted){
+         if (name=="" || cname=="" || number==""){
+            return <div>Some details are empty</div>
+         }
+         return(
+            <div>
+               <p>Name: {name}</p>
+               <p>Company Name: {cname}</p>
+               <p>Number: {number}</p>
+               <p>Details have been submitted!</p>
+            </div>
+         )
+      }
+   }
+
   render() {
 
     if(this.props.data){
@@ -27,7 +109,7 @@ class Contact extends Component {
 
             <div className="ten columns">
 
-                  <p className="lead">{message}</p>
+                  <p className="lead">Contact</p>
 
             </div>
 
@@ -36,38 +118,37 @@ class Contact extends Component {
          <div className="row">
             <div className="eight columns">
 
-               <form action="" method="post" id="contactForm" name="contactForm">
-					<fieldset>
+               
+					
 
                   <div>
-						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
+                     {this.nameError()}
+						   <label htmlFor="contactEmail">Company Name <span className="required">*</span></label>
+						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleName}/>
                   </div>
 
                   <div>
-						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>/>
+                     {this.numberError()}
+                     <label htmlFor="contactName">Number <span className="required">*</span></label>
+						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleNumber}/>
+						   
                   </div>
 
                   <div>
-						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>/>
+                     {this.cnameError()}
+						   <label htmlFor="contactSubject">Name <span className="required">*</span></label>
+						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleCName}/> 
                   </div>
 
                   <div>
-                     <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
-                  </div>
-
-                  <div>
-                     <button className="submit">Submit</button>
+                     <button className="submit" onClick={()=>this.handleSubmit()}>Submit</button>
                      <span id="image-loader">
                         <img alt="" src="images/loader.gif" />
                      </span>
                   </div>
-					</fieldset>
-				   </form>
+					
 
+            {this.showMessage()}
            <div id="message-warning"> Error boy</div>
 				   <div id="message-success">
                   <i className="fa fa-check"></i>Your message was sent, thank you!<br />
@@ -75,7 +156,7 @@ class Contact extends Component {
            </div>
 
 
-            <aside className="four columns footer-widgets">
+            {/* <aside className="four columns footer-widgets">
                <div className="widget widget_contact">
 
 					   <h4>Address and Phone</h4>
@@ -108,7 +189,7 @@ class Contact extends Component {
                      </li>
                   </ul>
 		         </div>
-            </aside>
+            </aside> */}
       </div>
    </section>
     );

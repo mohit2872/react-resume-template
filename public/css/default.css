@@ -171,10 +171,15 @@ h5 { font-size: 18px; line-height: 30px; }
 h6 { font-size: 14px; line-height: 30px; }
 .subheader { }
 
+.partnersImage{
+   height: 100px;
+}
+
 p { margin: 0 0 30px 0; }
 p img { margin: 0; }
 p.lead {
-   font: 19px/36px 'opensans-light', sans-serif;
+   font: 36px 'opensans-light', sans-serif;
+   font-size: 50px;
    margin-bottom: 18px;
 }
 
